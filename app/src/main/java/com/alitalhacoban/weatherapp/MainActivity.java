@@ -22,13 +22,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
     ListView listView;
-    Button btn_getCityID, btn_weatherByID, btn_weatherByName;
+    Button btn_weatherByName;
 
     WeatherDataService weatherDataService;
 
@@ -40,58 +41,9 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.cityName_editText);
         listView = findViewById(R.id.listView);
 
-        btn_getCityID = findViewById(R.id.btn_getCityID);
-        btn_weatherByID = findViewById(R.id.btn_weatherByID);
         btn_weatherByName = findViewById(R.id.btn_weatherByName);
 
         weatherDataService = new WeatherDataService(MainActivity.this);
-
-        btn_getCityID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                weatherDataService.getCityID(editText.getText().toString(), new WeatherDataService.VolleyResponseListener() {
-                    @Override
-                    public void onError(String message) {
-                        Toast.makeText(MainActivity.this, "Error (get city id)", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                    @Override
-                    public void onResponse(String cityID) {
-                        Toast.makeText(MainActivity.this, "ID of city : " + cityID, Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-
-            }
-        });
-
-
-        btn_weatherByID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                weatherDataService.getCityForecastByID(editText.getText().toString(), new WeatherDataService.ForecastByIDResponse() {
-                    @Override
-                    public void onError(String message) {
-
-                        Toast.makeText(MainActivity.this, "Error (forcast weather by id)", Toast.LENGTH_LONG).show();
-
-                    }
-
-                    @Override
-                    public void onResponse(List<WeatherReportModel> weatherReportModels) {
-                        ArrayAdapter<WeatherReportModel> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, weatherReportModels);
-                        listView.setAdapter(adapter);
-
-                    }
-                });
-
-            }
-        });
 
         btn_weatherByName.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -139,6 +139,7 @@ public class WeatherDataService {
                         one_day_weather.setMin_temp(firstDayFromApi.getLong("min_temp"));
                         one_day_weather.setMax_temp(firstDayFromApi.getLong("max_temp"));
                         one_day_weather.setThe_temp(firstDayFromApi.getLong("the_temp"));
+                        one_day_weather.setApplicable_date(firstDayFromApi.getString("applicable_date"));
 
                         reportModels.add(one_day_weather);
                     }
