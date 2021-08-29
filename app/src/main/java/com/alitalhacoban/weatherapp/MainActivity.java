@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 weatherDataService.getCityID(editText.getText().toString(), new WeatherDataService.VolleyResponseListener() {
                     @Override
                     public void onError(String message) {
-                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Error (get city id)", Toast.LENGTH_SHORT).show();
 
                     }
 
                     @Override
                     public void onResponse(String cityID) {
-                        Toast.makeText(MainActivity.this, "Returned an ID of : " + cityID, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "ID of city : " + cityID, Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 weatherDataService.getCityForecastByID(editText.getText().toString(), new WeatherDataService.ForecastByIDResponse() {
                     @Override
                     public void onError(String message) {
-                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_LONG).show();
 
+                        Toast.makeText(MainActivity.this, "Error (forcast weather by id)", Toast.LENGTH_LONG).show();
 
                     }
 
@@ -98,9 +98,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 weatherDataService.getCityForecastByName(editText.getText().toString(), new WeatherDataService.GetCityForecastByNameCallback() {
+
                     @Override
-                    public void onError() {
-                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    public void onError(String message) {
+                        Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -109,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                         listView.setAdapter(adapter);
                     }
                 });
-
             }
         });
     }

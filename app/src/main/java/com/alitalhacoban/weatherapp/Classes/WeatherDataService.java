@@ -75,35 +75,38 @@ public class WeatherDataService {
 
     }
 
-    public interface GetCityForecastByNameCallback{
-        void onError();
+    public interface GetCityForecastByNameCallback {
+
+        void onError(String message);
+
         void onResponse(List<WeatherReportModel> weatherReportModels);
     }
+    public void getCityForecastByName(String cityName, GetCityForecastByNameCallback getCityForecastByNameCallback) {
 
-    public void   getCityForecastByName(String cityName,GetCityForecastByNameCallback getCityForecastByNameCallback){
+        getCityID(cityName, new VolleyResponseListener() {
+            @Override
+            public void onError(String message) {
 
-       getCityID(cityName, new VolleyResponseListener() {
-           @Override
-           public void onError(String message) {
+                getCityForecastByNameCallback.onError("Error (forcast weather by name)");
 
-           }
+            }
 
-           @Override
-           public void onResponse(String cityID) {
+            @Override
+            public void onResponse(String cityID) {
 
-               getCityForecastByID(cityID, new ForecastByIDResponse() {
-                   @Override
-                   public void onError(String message) {
+                getCityForecastByID(cityID, new ForecastByIDResponse() {
+                    @Override
+                    public void onError(String message) {
 
-                   }
+                    }
 
-                   @Override
-                   public void onResponse(List<WeatherReportModel> weatherReportModels) {
-                       getCityForecastByNameCallback.onResponse(weatherReportModels);
-                   }
-               });
-           }
-       });
+                    @Override
+                    public void onResponse(List<WeatherReportModel> weatherReportModels) {
+                        getCityForecastByNameCallback.onResponse(weatherReportModels);
+                    }
+                });
+            }
+        });
 
     }
 
@@ -114,7 +117,7 @@ public class WeatherDataService {
         void onResponse(List<WeatherReportModel> weatherReportModels);
     }
 
-    public void getCityForecastByID(String cityID,ForecastByIDResponse forecastByIDResponse) {
+    public void getCityForecastByID(String cityID, ForecastByIDResponse forecastByIDResponse) {
 
         List<WeatherReportModel> reportModels = new ArrayList<>();
 
@@ -131,22 +134,12 @@ public class WeatherDataService {
                         WeatherReportModel one_day_weather = new WeatherReportModel();
 
                         JSONObject firstDayFromApi = (JSONObject) weather_list.get(i);
-                        one_day_weather.setId(firstDayFromApi.getInt("id"));
+
                         one_day_weather.setWeather_state_name(firstDayFromApi.getString("weather_state_name"));
-                        one_day_weather.setWeather_state_abbr(firstDayFromApi.getString("weather_state_abbr"));
-                        one_day_weather.setWind_direction_compass(firstDayFromApi.getString("wind_direction_compass"));
-                        one_day_weather.setCreated(firstDayFromApi.getString("created"));
-                        one_day_weather.setWeather_state_name(firstDayFromApi.getString("weather_state_name"));
-                        one_day_weather.setApplicable_date(firstDayFromApi.getString("applicable_date"));
                         one_day_weather.setMin_temp(firstDayFromApi.getLong("min_temp"));
                         one_day_weather.setMax_temp(firstDayFromApi.getLong("max_temp"));
                         one_day_weather.setThe_temp(firstDayFromApi.getLong("the_temp"));
-                        one_day_weather.setWind_speed(firstDayFromApi.getLong("wind_speed"));
-                        one_day_weather.setWind_direction(firstDayFromApi.getLong("wind_direction"));
-                        one_day_weather.setAir_pressure(firstDayFromApi.getInt("air_pressure"));
-                        one_day_weather.setHumidity(firstDayFromApi.getInt("humidity"));
-                        one_day_weather.setVisibility(firstDayFromApi.getLong("visibility"));
-                        one_day_weather.setPredictability(firstDayFromApi.getInt("predictability"));
+
                         reportModels.add(one_day_weather);
                     }
 
@@ -163,7 +156,7 @@ public class WeatherDataService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(context,error.getLocalizedMessage(),Toast.LENGTH_LONG).show();
             }
         });
 
