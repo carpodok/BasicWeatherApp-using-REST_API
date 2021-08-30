@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <string name="get_city_id">Get City ID</string>
-    <string name="weather_by_id">Weather By ID</string>
-    <string name="weather_by_name">Weather By Name</string>
+
+    <string name="weather_by_name">Get Weather Forecasts</string>
 </resources>

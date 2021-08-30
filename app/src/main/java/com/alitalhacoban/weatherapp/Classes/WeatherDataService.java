@@ -135,11 +135,12 @@ public class WeatherDataService {
 
                         JSONObject firstDayFromApi = (JSONObject) weather_list.get(i);
 
+                        one_day_weather.setApplicable_date(firstDayFromApi.getString("applicable_date"));
                         one_day_weather.setWeather_state_name(firstDayFromApi.getString("weather_state_name"));
                         one_day_weather.setMin_temp(firstDayFromApi.getLong("min_temp"));
                         one_day_weather.setMax_temp(firstDayFromApi.getLong("max_temp"));
                         one_day_weather.setThe_temp(firstDayFromApi.getLong("the_temp"));
-                        one_day_weather.setApplicable_date(firstDayFromApi.getString("applicable_date"));
+
 
                         reportModels.add(one_day_weather);
                     }
@@ -157,7 +158,7 @@ public class WeatherDataService {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context,error.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(context,"City is not found!",Toast.LENGTH_LONG).show();
             }
         });
 

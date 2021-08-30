@@ -46,11 +46,11 @@ public class WeatherReportModel {
     public String toString() {
         return
 
-                  "Weather State :" + weather_state_name
-                + "\n Date :'" + applicable_date
-                + "\n Min Temperature=" + min_temp
-                + "\n Max Temperature=" + max_temp
-                + "\n Temperature=" + the_temp;
+                "Date :" + applicable_date
+                        + "\n Weather State :'" + weather_state_name
+                        + "\n Min Temperature=" + min_temp
+                        + "\n Max Temperature=" + max_temp
+                        + "\n Temperature=" + the_temp;
 
     }
 
