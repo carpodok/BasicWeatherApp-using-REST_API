@@ -20,7 +20,7 @@
 
 <img src="https://user-images.githubusercontent.com/64840495/131288866-6cd75dc6-987d-4423-9ed0-9fbe57af8a0f.PNG" alt="Girl in a jacket" width="400" > <img src="https://user-images.githubusercontent.com/64840495/131288870-8d1e85ac-c309-402a-b451-4076a4fae472.PNG" alt="Girl in a jacket" width="400" >
 
-## <strong>:heavy_exclamation_mark: I have an <a href="https://medium.com/p/8064169bd918/edit">article</a> on my Medium account where I show you how to make this application step by step.</strong> 
+<!-- ## <strong>:heavy_exclamation_mark: I have an <a href="https://medium.com/p/8064169bd918/edit">article</a> on my Medium account where I show you how to make this application step by step.</strong> -->
  
 
 
