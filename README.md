@@ -6,7 +6,7 @@
 
 <hr>
 
-:information_source: There is an input area and a button on this app. You type a city like a London and then when you click button you'll see following information about weather;
+:information_source: There is an input area and a button on this app. You type a city such as a London and then when you click button you'll see following information about weather;
 
 :sunny: Weather State
 
