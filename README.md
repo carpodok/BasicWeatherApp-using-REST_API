@@ -4,7 +4,7 @@
 
 :white_circle: The site is <a href="https://www.metaweather.com/">metaweather.com</a> whose API I use.
 
-:white_circle: Singleton Pattern is available in this project.It's used to extract data from the website.
+:white_circle: Singleton Pattern is available in this project.It's used to extract data from the website.If you don't have an idea about Singleton Pattern, let's check my <a href="https://alitalhacoban.medium.com/singleton-design-pattern-in-android-4ea9f13327d1">article</a> in my Medium account
 
 <hr>
 
